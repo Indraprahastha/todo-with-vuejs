@@ -61,7 +61,7 @@ const deleteUser = (req,res) => {
     res.send(err)
   })
 }
-//----------------------------------------------------- delete data(v)
+//----------------------------------------------------- login data(v)
 const loginUser = (req,res) => {
   user.findOne({
     username:req.body.username
@@ -79,7 +79,7 @@ const loginUser = (req,res) => {
     }
   })
   .catch((err)=>{
-    res.send(err.message)
+    res.send('Fail')
   })
 }
 

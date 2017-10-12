@@ -1,0 +1,33 @@
+.body{
+  background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/stressed_linen.png');
+  /*background-color: #000000;*/
+  color: #ffffff;
+  font-family: 'Redressed', cursive;
+}
+
+.salam{
+  text-align: center;
+}
+
+.form{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  /*margin-top: 30px;*/
+}
+
+.buttonrounded{
+  border-radius: 25px;
+  background-image: url('http://cdn.pcwallart.com/images/gold-color-swatch-wallpaper-1.jpg');
+}
+
+.form-control{
+  border-radius: 25px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.container{
+  padding-top: 30px;
+}
