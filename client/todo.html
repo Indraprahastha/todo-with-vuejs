@@ -33,16 +33,24 @@
   </head>
 
   <body class="body">
-    <div class="container">
-      <div class="col-xs-6">
-
-      </div>
-      <div class="col-xs-6">
-
-      </div>
-    </div>
 
     <div id="app" class="container">
+      <div class="container">
+        <div class="">
+          <form>
+            <div class="form">
+
+              <div class="form-group">
+                <input ref="plant" type="text" class="form-control" placeholder="Input Plan Anda">
+              </div>
+
+              <button @click.prevent="buattodo" class="btn btn-default btn-lg btn-block buttonrounded"><b>Buat Todo</b></button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
       <div class="col-md-4">
         <h5>Selamat Datang di Todo Anda: </h5>
         <h5>Jika anda telah selesai memanage Todo Anda silahkan Logout</h5>
@@ -52,16 +60,20 @@
       <div class="col-md-8">
         <table class="table table-condensed">
           <tr>
-            <th>ID Todo</th>
+            <th>Pilihan</th>
             <th>Plan</th>
             <th>Status</th>
             <th>Username</th>
+            <th>Delete</th>
           </tr>
           <tr v-for="daftar in todo">
-            <td>{{daftar._id}}</td>
+            <td v-if="daftar.status==true"><button class="red" @click="rubahstatustrue(daftar)">Change</button></td>
+            <!-- <td v-if="daftar.status==true"><input type="checkbox" v-model="rubahstatustrue" checked ></td> -->
+            <td v-else><button class="gold" @click="rubahstatusfalse(daftar)">Change</button></td>
             <td>{{daftar.plan}}</td>
             <td>{{daftar.status}}</td>
             <td>{{daftar.iduser[0].username}}</td>
+            <td><button class="hapus" @click="hapus(daftar)">Hapus</button></td>
           </tr>
         </table>
       </div>

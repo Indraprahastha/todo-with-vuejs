@@ -2,6 +2,7 @@ let app = new Vue({
   el: '#app',
   data:{
     tokencek: localStorage.getItem('token'),
+    plant: '',
     sapaan: 'Silakan Login',
     sapaanDaftar: 'Silakan Daftar untuk membuat Akun',
     username: '',
@@ -45,6 +46,51 @@ let app = new Vue({
     },
     daftardirect () {
       window.location.replace("/daftar.html")
+    },
+    buattodo () {
+      this.plan = this.$refs.plant.value;
+      this.status = false;
+      // this.id = localStorage.getItem('token')
+      axios.post(`http://localhost:3005/todo`,{
+        plan: this.plan,
+        status: this.status,
+      })
+      .then(get => {
+        window.location.replace("/todo.html")
+      })
+    },
+    rubahstatustrue (id) {
+      this.plan = id.plan
+      this.status = false;
+      axios.put('http://localhost:3005/todo/' + id._id,{
+        // plan: this.plan,
+        status: false
+      })
+      .then(get => {
+        window.location.replace("/todo.html")
+      })
+    },
+    rubahstatusfalse (id) {
+      this.plan = id.plan
+      this.status = true;
+      axios.put('http://localhost:3005/todo/' + id._id,{
+        // plan: this.plan,
+        plan: this.plan,
+        status: true
+      })
+      .then(get => {
+        window.location.replace("/todo.html")
+      })
+    },
+    hapus (id) {
+      axios.delete('http://localhost:3005/todo/' + id._id,{
+        // plan: this.plan,
+        plan: this.plan,
+        status: true
+      })
+      .then(get => {
+        window.location.replace("/todo.html")
+      })
     }
   },
   created(){
@@ -55,7 +101,8 @@ let app = new Vue({
     })
     .then((response) => {
       this.todo = response.data
-      console.log(JSON.stringify(this.todo));
+      // console.log(JSON.stringify(this.todo));
     })
+
   },
 })

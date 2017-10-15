@@ -30,8 +30,20 @@
 
 .container{
   padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 .col-md-4 {
   padding-bottom: 15px;
+}
+.gold {
+  background-color: #aa6708;
+  /*color: #aa6708;*/
+}
+.red {
+  background-color: #d9534f;
+}
+.hapus {
+  color: #c7254e;
+  background-color: #000000;
 }

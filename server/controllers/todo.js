@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
+let id = ''
 //-------------------------------------------------------- getTodo(v)
 const getTodo = (req,res) => {
   let filter = jwt.verify(req.headers.token, process.env.DB_HOST,(err,decoded)=>{
@@ -11,6 +12,15 @@ const getTodo = (req,res) => {
   })
   todo.find({iduser:filter}).populate('iduser','username').then((todo)=>{
     console.log(filter);
+    id = filter
+    res.send(todo)
+  }).catch((err)=>{
+    res.send(err)
+  })
+}
+//-------------------------------- Dadrurat
+const getAllTodo = (req,res) => {
+  todo.find().populate('iduser','username').then((todo)=>{
     res.send(todo)
   }).catch((err)=>{
     res.send(err)
@@ -18,12 +28,13 @@ const getTodo = (req,res) => {
 }
 //---------------------------------------------------- createTodo(v)
 const addTodo = (req,res) => {
-  let id = jwt.verify(req.headers.token, process.env.DB_HOST,(err,decoded)=>{
-    return decoded._id
-  })
+  // let id = jwt.verify(req.headers.token, process.env.DB_HOST,(err,decoded)=>{
+  //   return decoded._id
+  // })
   todo.create({
     plan:req.body.plan,
     status:req.body.status,
+    // iduser:id
     iduser:id,
   }).then((todo)=>{
     res.send(todo)
@@ -43,9 +54,9 @@ const findTodo = (req,res) => {
 }
 //----------------------------------------------------- editTodo(v)
 const editTodo = (req,res) => {
-  let id = jwt.verify(req.headers.token, process.env.DB_HOST,(err,decoded)=>{
-    return decoded._id
-  })
+  // let id = jwt.verify(req.headers.token, process.env.DB_HOST,(err,decoded)=>{
+  //   return decoded._id
+  // })
   todo.update({
     _id:req.params.id
   },{
@@ -74,5 +85,6 @@ module.exports = {
   addTodo,
   findTodo,
   editTodo,
-  deleteTodo
+  deleteTodo,
+  getAllTodo
 }
