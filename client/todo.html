@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Todo With Vuejs</title>
+    <script type="text/javascript">
+      let token = localStorage.getItem('token')
+      if (token == 'Fail' || token == null) {
+        window.location.replace("/")
+      }
+    </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -27,8 +33,22 @@
   </head>
 
   <body class="body">
+    <div class="container">
+      <div class="col-xs-6">
+
+      </div>
+      <div class="col-xs-6">
+
+      </div>
+    </div>
 
     <div id="app" class="container">
+      <div class="col-md-4">
+        <h5>Selamat Datang di Todo Anda: </h5>
+        <h5>Jika anda telah selesai memanage Todo Anda silahkan Logout</h5>
+        <button @click.prevent="logout" class="btn btn-default btn-lg btn-block buttonrounded"><b>Logout</b></button>
+      </div>
+
       <div class="col-md-8">
         <table class="table table-condensed">
           <tr>
@@ -45,9 +65,7 @@
           </tr>
         </table>
       </div>
-      <div class="col-md-4">
 
-      </div>
 
     </div>
 

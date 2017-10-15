@@ -31,3 +31,7 @@
 .container{
   padding-top: 30px;
 }
+
+.col-md-4 {
+  padding-bottom: 15px;
+}

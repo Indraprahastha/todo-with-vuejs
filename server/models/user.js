@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/todo')
 
 let schema = new mongoose.Schema({
   username:'string',
@@ -7,6 +6,6 @@ let schema = new mongoose.Schema({
   email:'string'
 })
 
-var users = mongoose.model('users', schema)
+var penggunas = mongoose.model('penggunas', schema)
 
-module.exports = users
+module.exports = penggunas
