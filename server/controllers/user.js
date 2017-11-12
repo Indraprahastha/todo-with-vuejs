@@ -74,9 +74,10 @@ const loginUser = (req,res) => {
         email: data.email
       },process.env.DB_HOST);
       res.send(token)
-    } else {
-      res.send('Fail')
     }
+    // else {
+    //   res.send('Fail')
+    // }
   })
   .catch((err)=>{
     res.send('Fail')

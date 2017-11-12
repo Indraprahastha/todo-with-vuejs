@@ -56,18 +56,31 @@ let app = new Vue({
         status: this.status,
       })
       .then(get => {
-        window.location.replace("/todo.html")
+        // window.location.push("/todo.html")
+        this.panggil()
+      })
+    },
+    panggil () {
+      axios.get('http://localhost:3005/todo',{
+        headers:{
+          token:localStorage.getItem('token')
+        }
+      })
+      .then((response) => {
+        this.todo = response.data
+        // console.log(JSON.stringify(this.todo));
       })
     },
     rubahstatustrue (id) {
       this.plan = id.plan
       this.status = false;
       axios.put('http://localhost:3005/todo/' + id._id,{
-        // plan: this.plan,
+        plan: this.plan,
         status: false
       })
       .then(get => {
-        window.location.replace("/todo.html")
+        // window.location.replace("/todo.html")
+        this.panggil()
       })
     },
     rubahstatusfalse (id) {
@@ -79,7 +92,8 @@ let app = new Vue({
         status: true
       })
       .then(get => {
-        window.location.replace("/todo.html")
+        // window.location.replace("/todo.html")
+        this.panggil()
       })
     },
     hapus (id) {
@@ -89,7 +103,8 @@ let app = new Vue({
         status: true
       })
       .then(get => {
-        window.location.replace("/todo.html")
+        this.panggil()
+        // window.location.replace("/todo.html")
       })
     }
   },
@@ -105,4 +120,9 @@ let app = new Vue({
     })
 
   },
+  watch: {
+    todo: function (isi) {
+
+    }
+  }
 })
