@@ -14,7 +14,7 @@ let app = new Vue({
     proses (){
       this.username = this.$refs.username.value;
       this.password = this.$refs.password.value;
-      axios.post(`http://localhost:3005/user/login`,{
+      axios.post(`http://35.197.139.121:3000/user/login`,{
         username:this.username,
         password:this.password
       })
@@ -35,7 +35,7 @@ let app = new Vue({
       this.username = this.$refs.username.value;
       this.password = this.$refs.password.value;
       this.email = this.$refs.email.value;
-      axios.post(`http://localhost:3005/user`,{
+      axios.post(`http://35.197.139.121:3000/user`,{
         username:this.username,
         password:this.password,
         email:this.email
@@ -51,7 +51,7 @@ let app = new Vue({
       this.plan = this.$refs.plant.value;
       this.status = false;
       // this.id = localStorage.getItem('token')
-      axios.post(`http://localhost:3005/todo`,{
+      axios.post(`http://35.197.139.121:3000/todo`,{
         plan: this.plan,
         status: this.status,
       })
@@ -61,7 +61,7 @@ let app = new Vue({
       })
     },
     panggil () {
-      axios.get('http://localhost:3005/todo',{
+      axios.get('http://35.197.139.121:3000/todo',{
         headers:{
           token:localStorage.getItem('token')
         }
@@ -74,7 +74,7 @@ let app = new Vue({
     rubahstatustrue (id) {
       this.plan = id.plan
       this.status = false;
-      axios.put('http://localhost:3005/todo/' + id._id,{
+      axios.put('http://35.197.139.121:3000/todo/' + id._id,{
         plan: this.plan,
         status: false
       })
@@ -86,7 +86,7 @@ let app = new Vue({
     rubahstatusfalse (id) {
       this.plan = id.plan
       this.status = true;
-      axios.put('http://localhost:3005/todo/' + id._id,{
+      axios.put('http://35.197.139.121:3000/todo/' + id._id,{
         // plan: this.plan,
         plan: this.plan,
         status: true
@@ -97,7 +97,7 @@ let app = new Vue({
       })
     },
     hapus (id) {
-      axios.delete('http://localhost:3005/todo/' + id._id,{
+      axios.delete('http://35.197.139.121:3000/todo/' + id._id,{
         // plan: this.plan,
         plan: this.plan,
         status: true
@@ -109,7 +109,7 @@ let app = new Vue({
     }
   },
   created(){
-    axios.get('http://localhost:3005/todo',{
+    axios.get('http://35.197.139.121:3000/todo',{
       headers:{
         token:localStorage.getItem('token')
       }
